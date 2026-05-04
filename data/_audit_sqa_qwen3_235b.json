@@ -1,0 +1,245 @@
+{
+  "n": 500,
+  "warnings": [
+    "ORACLE STILL CLIMBING at round 8 (+1). Run more rounds to find ceiling!",
+    "Strategy 'challenge' is DESTRUCTIVE (net=-13). Consider excluding.",
+    "Strategy 'narrow' is DESTRUCTIVE (net=-6). Consider excluding.",
+    "Strategy 'pre_mortem' is DESTRUCTIVE (net=-6). Consider excluding.",
+    "Strategy 'pre_mortem_rescue' is DESTRUCTIVE (net=-5). Consider excluding.",
+    "HIGH OSCILLATION: 37%. MCW will be unreliable. Consider decay-weighted MCW or mode-of-unique selector."
+  ],
+  "vanilla_pct": 32.0,
+  "oracle_plateau": [
+    {
+      "round": 1,
+      "oracle": 160,
+      "pct": 32.0,
+      "new": 160,
+      "pct_of_remaining": 32.0
+    },
+    {
+      "round": 2,
+      "oracle": 231,
+      "pct": 46.2,
+      "new": 71,
+      "pct_of_remaining": 20.88235294117647
+    },
+    {
+      "round": 3,
+      "oracle": 240,
+      "pct": 48.0,
+      "new": 9,
+      "pct_of_remaining": 3.3457249070631967
+    },
+    {
+      "round": 4,
+      "oracle": 249,
+      "pct": 49.8,
+      "new": 9,
+      "pct_of_remaining": 3.4615384615384617
+    },
+    {
+      "round": 5,
+      "oracle": 257,
+      "pct": 51.4,
+      "new": 8,
+      "pct_of_remaining": 3.187250996015936
+    },
+    {
+      "round": 6,
+      "oracle": 260,
+      "pct": 52.0,
+      "new": 3,
+      "pct_of_remaining": 1.2345679012345678
+    },
+    {
+      "round": 7,
+      "oracle": 265,
+      "pct": 53.0,
+      "new": 5,
+      "pct_of_remaining": 2.083333333333333
+    },
+    {
+      "round": 8,
+      "oracle": 266,
+      "pct": 53.2,
+      "new": 1,
+      "pct_of_remaining": 0.425531914893617
+    }
+  ],
+  "strategy_analysis": {
+    "vanilla": {
+      "rescues": 0,
+      "regressions": 0,
+      "net": 0
+    },
+    "step_by_step": {
+      "rescues": 41,
+      "regressions": 12,
+      "net": 29
+    },
+    "challenge": {
+      "rescues": 9,
+      "regressions": 22,
+      "net": -13
+    },
+    "narrow": {
+      "rescues": 4,
+      "regressions": 10,
+      "net": -6
+    },
+    "verify": {
+      "rescues": 2,
+      "regressions": 4,
+      "net": -2
+    },
+    "pre_mortem": {
+      "rescues": 0,
+      "regressions": 6,
+      "net": -6
+    },
+    "pre_mortem_rescue": {
+      "rescues": 3,
+      "regressions": 8,
+      "net": -5
+    },
+    "reexamine": {
+      "rescues": 5,
+      "regressions": 4,
+      "net": 1
+    }
+  },
+  "n_correct": 126,
+  "n_retrievable": 73,
+  "n_epistemic": 176,
+  "feature_deltas": {
+    "mean_cr": {
+      "retr": 2.3299644141246936,
+      "epist": 2.295091199234676,
+      "delta": 0.03487321489001749,
+      "sep_pct": 1.4967273610965617
+    },
+    "std_cr": {
+      "retr": 0.5556437991726895,
+      "epist": 0.5277709351196667,
+      "delta": 0.027872864053022806,
+      "sep_pct": 5.016318744944754
+    },
+    "first5": {
+      "retr": 2.419178082191781,
+      "epist": 2.3852272727272728,
+      "delta": 0.033950809464508236,
+      "sep_pct": 1.403402656233919
+    },
+    "last5": {
+      "retr": 2.241095890410959,
+      "epist": 2.194318181818182,
+      "delta": 0.04677770859277697,
+      "sep_pct": 2.0872693931984836
+    },
+    "first_quarter": {
+      "retr": 2.658969341161122,
+      "epist": 2.645704816017316,
+      "delta": 0.013264525143805717,
+      "sep_pct": 0.49885964980752084
+    },
+    "mid_half": {
+      "retr": 2.311611219830398,
+      "epist": 2.240637093335957,
+      "delta": 0.07097412649444079,
+      "sep_pct": 3.0703314590957964
+    },
+    "last_quarter": {
+      "retr": 2.1698689438415464,
+      "epist": 2.1627976190476192,
+      "delta": 0.007071324793927136,
+      "sep_pct": 0.32588718383185067
+    },
+    "n_spikes": {
+      "retr": 0.9178082191780822,
+      "epist": 1.0113636363636365,
+      "delta": -0.09355541718555427,
+      "sep_pct": 9.250423272279521
+    },
+    "early_spikes": {
+      "retr": 0.5068493150684932,
+      "epist": 0.5454545454545454,
+      "delta": -0.038605230386052236,
+      "sep_pct": 7.077625570776244
+    },
+    "mid_spikes": {
+      "retr": 0.2876712328767123,
+      "epist": 0.3522727272727273,
+      "delta": -0.06460149439601498,
+      "sep_pct": 18.338488731771992
+    },
+    "late_spikes": {
+      "retr": 0.1232876712328767,
+      "epist": 0.11363636363636363,
+      "delta": 0.009651307596513073,
+      "sep_pct": 7.828282828282826
+    },
+    "early_ratio": {
+      "retr": 0.3710045662100457,
+      "epist": 0.4246212121212121,
+      "delta": -0.05361664591116644,
+      "sep_pct": 12.62693534393215
+    },
+    "max_cr": {
+      "retr": 3.410958904109589,
+      "epist": 3.4431818181818183,
+      "delta": -0.032222914072229436,
+      "sep_pct": 0.9358470093584786
+    },
+    "max_pos": {
+      "retr": 0.1691920134774401,
+      "epist": 0.15742736817759342,
+      "delta": 0.011764645299846666,
+      "sep_pct": 6.953428272437548
+    },
+    "trajectory": {
+      "retr": -0.4891003973195754,
+      "epist": -0.482907196969697,
+      "delta": -0.006193200349878414,
+      "sep_pct": 1.2662431647610812
+    },
+    "first_minus_mid": {
+      "retr": 0.3473581213307241,
+      "epist": 0.40506772268135904,
+      "delta": -0.057709601350634965,
+      "sep_pct": 14.24690196706476
+    }
+  },
+  "oscillators": 186,
+  "regressors": 105,
+  "stop_criteria": {
+    "fixed_all_MCW": {
+      "accuracy": 26.6,
+      "avg_rounds": 8.0
+    },
+    "agreement_2": {
+      "accuracy": 29.599999999999998,
+      "avg_rounds": 4.056
+    },
+    "decay_MCW": {
+      "accuracy": 25.6,
+      "avg_rounds": 8.0
+    },
+    "mode_of_unique": {
+      "accuracy": 27.200000000000003,
+      "avg_rounds": 8.0
+    },
+    "best_cr_round": {
+      "accuracy": 26.0,
+      "avg_rounds": 3.248
+    },
+    "last_round": {
+      "accuracy": 25.0,
+      "avg_rounds": 8.0
+    },
+    "first_correct_round": {
+      "accuracy": 27.0,
+      "avg_rounds": 1.0
+    }
+  }
+}

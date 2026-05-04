@@ -1,0 +1,40 @@
+{
+  "cells": [
+    {
+      "cell": "Qwen3-235B \u00d7 SimpleQA",
+      "size_B": 22,
+      "n_questions": 4410,
+      "skew": 2.854942835114116,
+      "slope_over_rounds": null,
+      "cr_r1": 2.2827528344671197,
+      "cr_drop": 0.0927601133786848
+    },
+    {
+      "cell": "Qwen3-235B \u00d7 MMLU-Pro STEM",
+      "size_B": 22,
+      "n_questions": 6334,
+      "skew": 3.0801614403433484,
+      "slope_over_rounds": -0.022656432339117894,
+      "cr_r1": 2.288216450899905,
+      "cr_drop": 0.10233642248184402
+    },
+    {
+      "cell": "LFM2 \u00d7 MMLU-Pro STEM",
+      "size_B": 2,
+      "n_questions": 4751,
+      "skew": 1.5402351312519227,
+      "slope_over_rounds": null,
+      "cr_r1": 2.3498412965691435,
+      "cr_drop": -0.1934036413386655
+    },
+    {
+      "cell": "GPT-oss-20b \u00d7 GPQA",
+      "size_B": 20,
+      "n_questions": 198,
+      "skew": 1.347749244835345,
+      "slope_over_rounds": null,
+      "cr_r1": 2.5829888888888886,
+      "cr_drop": -0.0025090909090909243
+    }
+  ]
+}

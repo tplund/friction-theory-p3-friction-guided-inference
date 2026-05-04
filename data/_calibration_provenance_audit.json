@@ -1,0 +1,1548 @@
+{
+  "sidecars_available": [
+    "cogito_671b",
+    "cogito_671b_gpqa",
+    "cogito_671b_gpqa_strategy_map",
+    "cogito_671b_pooled",
+    "cogito_671b_pooled_strategy_map",
+    "cogito_671b_truthfulqa",
+    "cogito_lockin",
+    "deepseek_lockin",
+    "deepseek_v3.1",
+    "gemma3_4b_local",
+    "gemma3_4b_local_truthfulqa",
+    "gemma4_26b",
+    "llama31_70b_instruct_fw",
+    "llama31_8b",
+    "llama31_8b_truthfulqa",
+    "llama33_70b_gpqa",
+    "llama33_70b_gpqa_strategy_map",
+    "llama33_70b_instruct",
+    "llama33_lockin",
+    "llama405b_base",
+    "llama405b_base_strategy_map",
+    "llama405b_instruct",
+    "llama70b_base",
+    "mixtral_8x7b_base",
+    "qwen25_7b_ft_b_v3_simpleqa_obscure",
+    "qwen25_7b_ft_b_v3_truthfulqa",
+    "qwen25_7b_instruct",
+    "qwen25_7b_instruct_truthfulqa",
+    "qwen35_397b_instruct",
+    "qwen3_235b",
+    "qwen3_235b_lockin",
+    "qwen3_235b_simpleqa",
+    "qwen3_235b_simpleqa_strategy_map"
+  ],
+  "audits": [
+    {
+      "file": "b0_long_cogito_671b_O_CNS_simpleqa_obscure.jsonl",
+      "n": 50,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "simpleqa-obscure",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "cogito_671b",
+      "expected_sidecar": "cogito_671b_simpleqa-obscure",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "LOW"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "EVEN"
+      }
+    },
+    {
+      "file": "b0_long_cogito_671b_O_CNS_truthfulqa.jsonl",
+      "n": 50,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "cogito_671b_truthfulqa",
+      "expected_sidecar": "cogito_671b_truthfulqa",
+      "provenance_status": "NATIVE",
+      "provenance_note": "Native calibration: sidecar matches (model, benchmark)",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "SPIKY"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "EVEN"
+      }
+    },
+    {
+      "file": "b0_long_cogito_671b_O_NSC_simpleqa_obscure.jsonl",
+      "n": 50,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "simpleqa-obscure",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "cogito_671b",
+      "expected_sidecar": "cogito_671b_simpleqa-obscure",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "LOW"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "LOW"
+      }
+    },
+    {
+      "file": "b0_long_cogito_671b_O_NSC_truthfulqa.jsonl",
+      "n": 50,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "cogito_671b_truthfulqa",
+      "expected_sidecar": "cogito_671b_truthfulqa",
+      "provenance_status": "NATIVE",
+      "provenance_note": "Native calibration: sidecar matches (model, benchmark)",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "SPIKY"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "EVEN"
+      }
+    },
+    {
+      "file": "b0_long_cogito_671b_O_SNC_simpleqa_obscure.jsonl",
+      "n": 50,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "simpleqa-obscure",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "cogito_671b",
+      "expected_sidecar": "cogito_671b_simpleqa-obscure",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "SPREAD"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "EVEN"
+      }
+    },
+    {
+      "file": "b0_long_cogito_671b_O_SNC_truthfulqa.jsonl",
+      "n": 50,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "cogito_671b_truthfulqa",
+      "expected_sidecar": "cogito_671b_truthfulqa",
+      "provenance_status": "NATIVE",
+      "provenance_note": "Native calibration: sidecar matches (model, benchmark)",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "SPIKY"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "EVEN"
+      }
+    },
+    {
+      "file": "b0_long_deepseek_v3p1_O_CNS_simpleqa_obscure.jsonl",
+      "n": 50,
+      "inferred_model": "deepseek_v3p1",
+      "inferred_benchmark": "simpleqa-obscure",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "deepseek_v3.1",
+      "expected_sidecar": "deepseek_v3p1_simpleqa-obscure",
+      "provenance_status": "FOREIGN",
+      "provenance_note": "Neither model nor benchmark matches sidecar",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "LOW"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "EVEN"
+      }
+    },
+    {
+      "file": "b0_long_deepseek_v3p1_O_CNS_truthfulqa.jsonl",
+      "n": 50,
+      "inferred_model": "deepseek_v3p1",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "deepseek_v3.1",
+      "expected_sidecar": "deepseek_v3p1_truthfulqa",
+      "provenance_status": "FOREIGN",
+      "provenance_note": "Neither model nor benchmark matches sidecar",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "LOW"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "LOW"
+      }
+    },
+    {
+      "file": "b0_long_deepseek_v3p1_O_NSC_simpleqa_obscure.jsonl",
+      "n": 50,
+      "inferred_model": "deepseek_v3p1",
+      "inferred_benchmark": "simpleqa-obscure",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "deepseek_v3.1",
+      "expected_sidecar": "deepseek_v3p1_simpleqa-obscure",
+      "provenance_status": "FOREIGN",
+      "provenance_note": "Neither model nor benchmark matches sidecar",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "LOW"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "EVEN"
+      }
+    },
+    {
+      "file": "b0_long_deepseek_v3p1_O_NSC_truthfulqa.jsonl",
+      "n": 50,
+      "inferred_model": "deepseek_v3p1",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "deepseek_v3.1",
+      "expected_sidecar": "deepseek_v3p1_truthfulqa",
+      "provenance_status": "FOREIGN",
+      "provenance_note": "Neither model nor benchmark matches sidecar",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "LOW",
+          "SPREAD"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "LOW"
+      }
+    },
+    {
+      "file": "b0_long_deepseek_v3p1_O_SNC_simpleqa_obscure.jsonl",
+      "n": 50,
+      "inferred_model": "deepseek_v3p1",
+      "inferred_benchmark": "simpleqa-obscure",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "deepseek_v3.1",
+      "expected_sidecar": "deepseek_v3p1_simpleqa-obscure",
+      "provenance_status": "FOREIGN",
+      "provenance_note": "Neither model nor benchmark matches sidecar",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "LOW"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "EVEN"
+      }
+    },
+    {
+      "file": "b0_long_deepseek_v3p1_O_SNC_truthfulqa.jsonl",
+      "n": 50,
+      "inferred_model": "deepseek_v3p1",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "deepseek_v3.1",
+      "expected_sidecar": "deepseek_v3p1_truthfulqa",
+      "provenance_status": "FOREIGN",
+      "provenance_note": "Neither model nor benchmark matches sidecar",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "LOW",
+          "SPREAD"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "LOW"
+      }
+    },
+    {
+      "file": "b0_long_llama33_70b_instruct_O_CNS_simpleqa_obscure.jsonl",
+      "n": 50,
+      "inferred_model": "llama33_70b",
+      "inferred_benchmark": "simpleqa-obscure",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "llama33_70b_instruct",
+      "expected_sidecar": "llama33_70b_simpleqa-obscure",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "SPIKY"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "SPIKY"
+      }
+    },
+    {
+      "file": "b0_long_llama33_70b_instruct_O_NSC_simpleqa_obscure.jsonl",
+      "n": 50,
+      "inferred_model": "llama33_70b",
+      "inferred_benchmark": "simpleqa-obscure",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "llama33_70b_instruct",
+      "expected_sidecar": "llama33_70b_simpleqa-obscure",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "LOW",
+          "SPIKY"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "SPIKY"
+      }
+    },
+    {
+      "file": "b0_long_llama33_70b_instruct_O_SNC_simpleqa_obscure.jsonl",
+      "n": 50,
+      "inferred_model": "llama33_70b",
+      "inferred_benchmark": "simpleqa-obscure",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "llama33_70b_instruct",
+      "expected_sidecar": "llama33_70b_simpleqa-obscure",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "LOW",
+          "SPIKY"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "EVEN"
+      }
+    },
+    {
+      "file": "b0_long_llama33_70b_instruct_O_SNC_truthfulqa.jsonl",
+      "n": 50,
+      "inferred_model": "llama33_70b",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "llama33_70b_instruct",
+      "expected_sidecar": "llama33_70b_truthfulqa",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "LOW"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "LOW"
+      }
+    },
+    {
+      "file": "b0_long_qwen3_235b_O_CNS_simpleqa_obscure.jsonl",
+      "n": 50,
+      "inferred_model": "qwen3_235b",
+      "inferred_benchmark": "simpleqa-obscure",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "qwen3_235b",
+      "expected_sidecar": "qwen3_235b_simpleqa-obscure",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "SPIKY"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "EVEN"
+      }
+    },
+    {
+      "file": "b0_long_qwen3_235b_O_CNS_truthfulqa.jsonl",
+      "n": 50,
+      "inferred_model": "qwen3_235b",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "qwen3_235b",
+      "expected_sidecar": "qwen3_235b_truthfulqa",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "EVEN"
+      }
+    },
+    {
+      "file": "b0_long_qwen3_235b_O_NSC_simpleqa_obscure.jsonl",
+      "n": 50,
+      "inferred_model": "qwen3_235b",
+      "inferred_benchmark": "simpleqa-obscure",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "qwen3_235b",
+      "expected_sidecar": "qwen3_235b_simpleqa-obscure",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "SPIKY"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "EVEN"
+      }
+    },
+    {
+      "file": "b0_long_qwen3_235b_O_NSC_truthfulqa.jsonl",
+      "n": 50,
+      "inferred_model": "qwen3_235b",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "qwen3_235b",
+      "expected_sidecar": "qwen3_235b_truthfulqa",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "SPIKY"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "EVEN"
+      }
+    },
+    {
+      "file": "b0_long_qwen3_235b_O_SNC_simpleqa_obscure.jsonl",
+      "n": 50,
+      "inferred_model": "qwen3_235b",
+      "inferred_benchmark": "simpleqa-obscure",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "qwen3_235b",
+      "expected_sidecar": "qwen3_235b_simpleqa-obscure",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "SPIKY"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "EVEN"
+      }
+    },
+    {
+      "file": "b0_long_qwen3_235b_O_SNC_truthfulqa.jsonl",
+      "n": 50,
+      "inferred_model": "qwen3_235b",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "qwen3_235b",
+      "expected_sidecar": "qwen3_235b_truthfulqa",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "EVEN"
+      }
+    },
+    {
+      "file": "b0_long_qwen3_8b_O_CNS_simpleqa_obscure.jsonl",
+      "n": 50,
+      "inferred_model": "qwen3_8b",
+      "inferred_benchmark": "simpleqa-obscure",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen3_8b_simpleqa-obscure",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "SPIKY",
+          "SPREAD"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "SPREAD"
+      }
+    },
+    {
+      "file": "b0_long_qwen3_8b_O_CNS_truthfulqa.jsonl",
+      "n": 50,
+      "inferred_model": "qwen3_8b",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen3_8b_truthfulqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "SPREAD"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "SPREAD"
+      }
+    },
+    {
+      "file": "b0_long_qwen3_8b_O_NSC_truthfulqa.jsonl",
+      "n": 50,
+      "inferred_model": "qwen3_8b",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen3_8b_truthfulqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "SPREAD"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "SPREAD"
+      }
+    },
+    {
+      "file": "b0_long_qwen3_8b_O_SNC_simpleqa_obscure.jsonl",
+      "n": 27,
+      "inferred_model": "qwen3_8b",
+      "inferred_benchmark": "simpleqa-obscure",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen3_8b_simpleqa-obscure",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "SPIKY",
+          "SPREAD"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "SPREAD"
+      }
+    },
+    {
+      "file": "b0_long_qwen3_8b_O_SNC_truthfulqa.jsonl",
+      "n": 50,
+      "inferred_model": "qwen3_8b",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen3_8b_truthfulqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "SPREAD"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": "SPREAD"
+      }
+    },
+    {
+      "file": "gpqa_adaptive_cogito.jsonl",
+      "n": 198,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "gpqa_diamond",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "cogito_671b",
+      "expected_sidecar": "cogito_671b_gpqa_diamond",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 3,
+        "bucket_values": [
+          "EVEN"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "gpqa_adaptive_cogito_cal.jsonl",
+      "n": 100,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "gpqa_diamond",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "cogito_671b",
+      "expected_sidecar": "cogito_671b_gpqa_diamond",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 7,
+        "bucket_values": [
+          "EVEN"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "gpqa_adaptive_cogito_pooled.jsonl",
+      "n": 100,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "gpqa_diamond",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "cogito_671b",
+      "expected_sidecar": "cogito_671b_gpqa_diamond",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 7,
+        "bucket_values": [
+          "EVEN"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "gpqa_adaptive_llama33_70b_cal.jsonl",
+      "n": 50,
+      "inferred_model": "llama33_70b",
+      "inferred_benchmark": "gpqa_diamond",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "llama33_70b_instruct",
+      "expected_sidecar": "llama33_70b_gpqa_diamond",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 1,
+        "bucket_values": [
+          "LOW"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "gpqa_iterative_cogito_O_NSC.jsonl",
+      "n": 198,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "gpqa_diamond",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "cogito_671b",
+      "expected_sidecar": "cogito_671b_gpqa_diamond",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "gpqa_iterative_deepseek_v3p1_O_NSC.jsonl",
+      "n": 50,
+      "inferred_model": "deepseek_v3p1",
+      "inferred_benchmark": "gpqa_diamond",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "deepseek_v3p1",
+      "expected_sidecar": "deepseek_v3p1_gpqa_diamond",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "SPREAD"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "gpqa_iterative_kimi_k2_0905_O_NSC.jsonl",
+      "n": 50,
+      "inferred_model": "kimi_k2",
+      "inferred_benchmark": "gpqa_diamond",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "kimi_k2_0905",
+      "expected_sidecar": "kimi_k2_gpqa_diamond",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "SPREAD"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "gpqa_iterative_llama33_70b_O_NSC.jsonl",
+      "n": 198,
+      "inferred_model": "llama33_70b",
+      "inferred_benchmark": "gpqa_diamond",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "llama33_70b_instruct",
+      "expected_sidecar": "llama33_70b_gpqa_diamond",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "LOW",
+          "SPIKY"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "gpqa_iterative_qwen3_235b_O_NSC.jsonl",
+      "n": 198,
+      "inferred_model": "qwen3_235b",
+      "inferred_benchmark": "gpqa_diamond",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": "qwen3_235b",
+      "expected_sidecar": "qwen3_235b_gpqa_diamond",
+      "provenance_status": "CROSS_BENCHMARK",
+      "provenance_note": "Model matches but sidecar fitted on different benchmark",
+      "bucket_info": {
+        "rounds_with_bucket": 6,
+        "bucket_values": [
+          "EVEN",
+          "SPIKY",
+          "SPREAD"
+        ],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_cogito_671b.jsonl",
+      "n": 500,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "cogito_671b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPIKY",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_cogito_671b_full.jsonl",
+      "n": 4276,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "cogito_671b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPIKY",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_deepseek_v3.1.jsonl",
+      "n": 500,
+      "inferred_model": "deepseek_v3p1",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "deepseek_v3p1_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPIKY",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_gemma3_4b_local.jsonl",
+      "n": 50,
+      "inferred_model": "gemma3:4b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "gemma3:4b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_gemma4_26b.jsonl",
+      "n": 200,
+      "inferred_model": "google/gemma-4-26b-a4b-it",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "google/gemma-4-26b-a4b-it_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_llama31_70b_instruct_fw.jsonl",
+      "n": 500,
+      "inferred_model": "accounts/elearningspecialist/deployments/wl29c8p7",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "accounts/elearningspecialist/deployments/wl29c8p7_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_llama31_8b.jsonl",
+      "n": 500,
+      "inferred_model": "llama31_8b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "llama31_8b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_llama33_70b_instruct.jsonl",
+      "n": 500,
+      "inferred_model": "accounts/fireworks/models/llama-v3p3-70b-instruct",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "accounts/fireworks/models/llama-v3p3-70b-instruct_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPIKY",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_llama405b_base.jsonl",
+      "n": 200,
+      "inferred_model": "tlund_9828/meta-llama/llama-3.1-405b-2ea1daac",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "tlund_9828/meta-llama/llama-3.1-405b-2ea1daac_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPIKY",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_llama405b_instruct.jsonl",
+      "n": 200,
+      "inferred_model": "tlund_9828/meta-llama/llama-3.1-405b-instruct-ef41ee5e",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "tlund_9828/meta-llama/llama-3.1-405b-instruct-ef41ee5e_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_llama405b_instruct_cr.jsonl",
+      "n": 200,
+      "inferred_model": "meta-llama/llama-3.1-405b-instruct",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "meta-llama/llama-3.1-405b-instruct_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_llama70b.jsonl",
+      "n": 200,
+      "inferred_model": "llama33_70b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "llama33_70b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_llama70b_base.jsonl",
+      "n": 203,
+      "inferred_model": "llama31_70b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "llama31_70b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPIKY",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_mixtral_8x7b_base.jsonl",
+      "n": 200,
+      "inferred_model": "mixtral_8x7b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "mixtral_8x7b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPIKY",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_phi35_local.jsonl",
+      "n": 50,
+      "inferred_model": "phi3.5:3.8b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "phi3.5:3.8b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_qwen25_7b_instruct.jsonl",
+      "n": 500,
+      "inferred_model": "qwen25_7b_instruct",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen25_7b_instruct_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPIKY",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_qwen35_397b_base.jsonl",
+      "n": 203,
+      "inferred_model": "qwen35_397b_instruct",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen35_397b_instruct_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_qwen35_397b_instruct.jsonl",
+      "n": 500,
+      "inferred_model": "qwen35_397b_instruct",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen35_397b_instruct_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_qwen3_235b.jsonl",
+      "n": 200,
+      "inferred_model": "qwen3_235b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen3_235b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPIKY",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_simpleqa_qwen3_235b_full.jsonl",
+      "n": 4276,
+      "inferred_model": "qwen3_235b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen3_235b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_truthfulqa_cogito_671b.jsonl",
+      "n": 3,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "cogito_671b_truthfulqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_truthfulqa_gemma3_4b_local.jsonl",
+      "n": 100,
+      "inferred_model": "gemma3:4b",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "gemma3:4b_truthfulqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_truthfulqa_llama31_8b.jsonl",
+      "n": 761,
+      "inferred_model": "llama31_8b",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "llama31_8b_truthfulqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_truthfulqa_qwen25_7b_instruct.jsonl",
+      "n": 500,
+      "inferred_model": "qwen25_7b_instruct",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen25_7b_instruct_truthfulqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "iterative_profile_v3_simpleqa_qwen3_235b.jsonl",
+      "n": 200,
+      "inferred_model": "qwen3_235b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen3_235b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPIKY",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "math_adaptive_qwen25_7b.jsonl",
+      "n": 20,
+      "inferred_model": "qwen25_7b_instruct",
+      "inferred_benchmark": "math500",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen25_7b_instruct_math500",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "math_full_llama31_8b.jsonl",
+      "n": 3,
+      "inferred_model": "llama31_8b",
+      "inferred_benchmark": "math500",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "llama31_8b_math500",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "math_full_mixtral_8x7b.jsonl",
+      "n": 262,
+      "inferred_model": "mixtral_8x7b",
+      "inferred_benchmark": "math500",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "mixtral_8x7b_math500",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "math_full_qwen25_7b.jsonl",
+      "n": 262,
+      "inferred_model": "qwen25_7b_instruct",
+      "inferred_benchmark": "math500",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen25_7b_instruct_math500",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "math_live_iterative_qwen25_7b.jsonl",
+      "n": 92,
+      "inferred_model": "qwen25_7b_instruct",
+      "inferred_benchmark": "math500",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen25_7b_instruct_math500",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "profile_adaptive_simpleqa_cogito_671b.jsonl",
+      "n": 200,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "cogito_671b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPIKY",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "profile_adaptive_simpleqa_llama70b.jsonl",
+      "n": 200,
+      "inferred_model": "llama33_70b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": true,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "llama33_70b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": "SPREAD",
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "sequential_friction_simpleqa_cogito_671b.jsonl",
+      "n": 200,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "cogito_671b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "sequential_friction_simpleqa_liquid_24b.jsonl",
+      "n": 217,
+      "inferred_model": "liquidai/lfm2-24b-a2b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "liquidai/lfm2-24b-a2b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "sequential_friction_simpleqa_llama70b.jsonl",
+      "n": 200,
+      "inferred_model": "accounts/fireworks/models/llama-v3p3-70b-instruct",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "accounts/fireworks/models/llama-v3p3-70b-instruct_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "sequential_friction_simpleqa_mixtral_8x7b_instruct.jsonl",
+      "n": 200,
+      "inferred_model": "mixtral_8x7b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "mixtral_8x7b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "sequential_friction_simpleqa_qwen25_7b_instruct.jsonl",
+      "n": 3,
+      "inferred_model": "qwen25_7b_instruct",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen25_7b_instruct_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "sequential_friction_simpleqa_qwen3_4b_instruct.jsonl",
+      "n": 3,
+      "inferred_model": "qwen/qwen3-4b-instruct-2507",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen/qwen3-4b-instruct-2507_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "sequential_friction_truthfulqa_cogito_671b.jsonl",
+      "n": 617,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "cogito_671b_truthfulqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "sequential_friction_truthfulqa_gemma3_4b_local.jsonl",
+      "n": 50,
+      "inferred_model": "gemma3:4b",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "gemma3:4b_truthfulqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "sequential_friction_truthfulqa_llama70b.jsonl",
+      "n": 993,
+      "inferred_model": "accounts/fireworks/models/llama-v3p3-70b-instruct",
+      "inferred_benchmark": "truthfulqa",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "accounts/fireworks/models/llama-v3p3-70b-instruct_truthfulqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "simpleqa_adaptive_cogito_671b.jsonl",
+      "n": 617,
+      "inferred_model": "cogito_671b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "cogito_671b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "simpleqa_adaptive_liquid_24b.jsonl",
+      "n": 200,
+      "inferred_model": "liquidai/lfm2-24b-a2b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "liquidai/lfm2-24b-a2b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "simpleqa_adaptive_llama70b.jsonl",
+      "n": 467,
+      "inferred_model": "accounts/fireworks/models/llama-v3p3-70b-instruct",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "accounts/fireworks/models/llama-v3p3-70b-instruct_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "simpleqa_adaptive_llama70b_50qcal.jsonl",
+      "n": 617,
+      "inferred_model": "accounts/fireworks/models/llama-v3p3-70b-instruct",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "accounts/fireworks/models/llama-v3p3-70b-instruct_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "simpleqa_adaptive_mixtral_8x7b.jsonl",
+      "n": 200,
+      "inferred_model": "mixtral_8x7b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "mixtral_8x7b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED_PROBABLE",
+      "provenance_note": "No sidecar_id in row data; classify_profile likely called without model_id",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    },
+    {
+      "file": "simpleqa_adaptive_qwen35_9b.jsonl",
+      "n": 200,
+      "inferred_model": "qwen/qwen3.5-9b",
+      "inferred_benchmark": "simpleqa",
+      "uses_profile_classification": false,
+      "declared_sidecar_id": null,
+      "expected_sidecar": "qwen/qwen3.5-9b_simpleqa",
+      "provenance_status": "LEGACY_HARDCODED",
+      "provenance_note": "No sidecar_id in row data AND no model-matching sidecar in data/profile_thresholds",
+      "bucket_info": {
+        "rounds_with_bucket": 0,
+        "bucket_values": [],
+        "vanilla_profile": null,
+        "vanilla_bucket": null
+      }
+    }
+  ]
+}

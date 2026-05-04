@@ -1,0 +1,491 @@
+{
+  "train_phase": "smoke",
+  "test_phase": "long",
+  "max_depth": 4,
+  "max_rounds": 5,
+  "tau_settle": 0.3,
+  "tau_conf": 0.55,
+  "budgets": [
+    0,
+    1,
+    2
+  ],
+  "judge_model": "claude-haiku-4-5-20251001",
+  "results": {
+    "cogito_671b": {
+      "n_train": 772,
+      "n_test": 100,
+      "budgets": [
+        {
+          "n": 100,
+          "budget": 0,
+          "tau_settle": 0.3,
+          "tau_conf": 0.55,
+          "vanilla_rate": 0.5,
+          "policy_final_rate": 0.67,
+          "policy_any_visited_rate": 0.69,
+          "judge_calls_total": 0,
+          "judge_used_questions": 0,
+          "judge_correct_when_used": 0,
+          "judge_trigger_counts": {
+            "settled": 0,
+            "unsure": 0
+          },
+          "judge_call_rate": 0.0,
+          "sample_walks": [
+            {
+              "qi": 52,
+              "actions": [
+                "challenge"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": false
+            },
+            {
+              "qi": 53,
+              "actions": [
+                "challenge"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": false
+            },
+            {
+              "qi": 55,
+              "actions": [
+                "challenge",
+                "narrow",
+                "step_by_step"
+              ],
+              "n_visited": 4,
+              "outcome": "wrong",
+              "judge_used": false
+            },
+            {
+              "qi": 60,
+              "actions": [
+                "challenge",
+                "narrow",
+                "step_by_step"
+              ],
+              "n_visited": 4,
+              "outcome": "wrong",
+              "judge_used": false
+            },
+            {
+              "qi": 62,
+              "actions": [
+                "challenge",
+                "narrow",
+                "step_by_step"
+              ],
+              "n_visited": 4,
+              "outcome": "wrong",
+              "judge_used": false
+            },
+            {
+              "qi": 63,
+              "actions": [
+                "challenge",
+                "step_by_step"
+              ],
+              "n_visited": 3,
+              "outcome": "correct",
+              "judge_used": false
+            }
+          ]
+        },
+        {
+          "n": 100,
+          "budget": 1,
+          "tau_settle": 0.3,
+          "tau_conf": 0.55,
+          "vanilla_rate": 0.5,
+          "policy_final_rate": 0.61,
+          "policy_any_visited_rate": 0.61,
+          "judge_calls_total": 40,
+          "judge_used_questions": 40,
+          "judge_correct_when_used": 3,
+          "judge_trigger_counts": {
+            "settled": 27,
+            "unsure": 13
+          },
+          "judge_call_rate": 0.4,
+          "sample_walks": [
+            {
+              "qi": 52,
+              "actions": [
+                "challenge"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": false
+            },
+            {
+              "qi": 53,
+              "actions": [
+                "challenge"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": false
+            },
+            {
+              "qi": 55,
+              "actions": [
+                "challenge",
+                "JUDGE[settled]"
+              ],
+              "n_visited": 2,
+              "outcome": "wrong",
+              "judge_used": true
+            },
+            {
+              "qi": 60,
+              "actions": [
+                "challenge",
+                "JUDGE[settled]"
+              ],
+              "n_visited": 2,
+              "outcome": "wrong",
+              "judge_used": true
+            },
+            {
+              "qi": 62,
+              "actions": [
+                "challenge",
+                "JUDGE[settled]"
+              ],
+              "n_visited": 2,
+              "outcome": "wrong",
+              "judge_used": true
+            },
+            {
+              "qi": 63,
+              "actions": [
+                "challenge",
+                "JUDGE[unsure]"
+              ],
+              "n_visited": 2,
+              "outcome": "wrong",
+              "judge_used": true
+            }
+          ]
+        },
+        {
+          "n": 100,
+          "budget": 2,
+          "tau_settle": 0.3,
+          "tau_conf": 0.55,
+          "vanilla_rate": 0.5,
+          "policy_final_rate": 0.61,
+          "policy_any_visited_rate": 0.61,
+          "judge_calls_total": 40,
+          "judge_used_questions": 40,
+          "judge_correct_when_used": 3,
+          "judge_trigger_counts": {
+            "settled": 27,
+            "unsure": 13
+          },
+          "judge_call_rate": 0.4,
+          "sample_walks": [
+            {
+              "qi": 52,
+              "actions": [
+                "challenge"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": false
+            },
+            {
+              "qi": 53,
+              "actions": [
+                "challenge"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": false
+            },
+            {
+              "qi": 55,
+              "actions": [
+                "challenge",
+                "JUDGE[settled]"
+              ],
+              "n_visited": 2,
+              "outcome": "wrong",
+              "judge_used": true
+            },
+            {
+              "qi": 60,
+              "actions": [
+                "challenge",
+                "JUDGE[settled]"
+              ],
+              "n_visited": 2,
+              "outcome": "wrong",
+              "judge_used": true
+            },
+            {
+              "qi": 62,
+              "actions": [
+                "challenge",
+                "JUDGE[settled]"
+              ],
+              "n_visited": 2,
+              "outcome": "wrong",
+              "judge_used": true
+            },
+            {
+              "qi": 63,
+              "actions": [
+                "challenge",
+                "JUDGE[unsure]"
+              ],
+              "n_visited": 2,
+              "outcome": "wrong",
+              "judge_used": true
+            }
+          ]
+        }
+      ]
+    },
+    "qwen3_235b": {
+      "n_train": 742,
+      "n_test": 100,
+      "budgets": [
+        {
+          "n": 100,
+          "budget": 0,
+          "tau_settle": 0.3,
+          "tau_conf": 0.55,
+          "vanilla_rate": 0.65,
+          "policy_final_rate": 0.82,
+          "policy_any_visited_rate": 0.82,
+          "judge_calls_total": 0,
+          "judge_used_questions": 0,
+          "judge_correct_when_used": 0,
+          "judge_trigger_counts": {
+            "settled": 0,
+            "unsure": 0
+          },
+          "judge_call_rate": 0.0,
+          "sample_walks": [
+            {
+              "qi": 52,
+              "actions": [
+                "narrow"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": false
+            },
+            {
+              "qi": 53,
+              "actions": [
+                "narrow"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": false
+            },
+            {
+              "qi": 55,
+              "actions": [
+                "narrow",
+                "step_by_step",
+                "challenge"
+              ],
+              "n_visited": 4,
+              "outcome": "wrong",
+              "judge_used": false
+            },
+            {
+              "qi": 60,
+              "actions": [
+                "narrow",
+                "step_by_step"
+              ],
+              "n_visited": 3,
+              "outcome": "correct",
+              "judge_used": false
+            },
+            {
+              "qi": 62,
+              "actions": [
+                "narrow",
+                "step_by_step"
+              ],
+              "n_visited": 3,
+              "outcome": "correct",
+              "judge_used": false
+            },
+            {
+              "qi": 63,
+              "actions": [
+                "narrow"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": false
+            }
+          ]
+        },
+        {
+          "n": 100,
+          "budget": 1,
+          "tau_settle": 0.3,
+          "tau_conf": 0.55,
+          "vanilla_rate": 0.65,
+          "policy_final_rate": 0.75,
+          "policy_any_visited_rate": 0.77,
+          "judge_calls_total": 28,
+          "judge_used_questions": 28,
+          "judge_correct_when_used": 3,
+          "judge_trigger_counts": {
+            "settled": 1,
+            "unsure": 27
+          },
+          "judge_call_rate": 0.28,
+          "sample_walks": [
+            {
+              "qi": 52,
+              "actions": [
+                "narrow"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": false
+            },
+            {
+              "qi": 53,
+              "actions": [
+                "narrow"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": false
+            },
+            {
+              "qi": 55,
+              "actions": [
+                "narrow",
+                "JUDGE[unsure]"
+              ],
+              "n_visited": 2,
+              "outcome": "wrong",
+              "judge_used": true
+            },
+            {
+              "qi": 60,
+              "actions": [
+                "narrow",
+                "JUDGE[unsure]"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": true
+            },
+            {
+              "qi": 62,
+              "actions": [
+                "narrow",
+                "JUDGE[unsure]"
+              ],
+              "n_visited": 2,
+              "outcome": "wrong",
+              "judge_used": true
+            },
+            {
+              "qi": 63,
+              "actions": [
+                "narrow"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": false
+            }
+          ]
+        },
+        {
+          "n": 100,
+          "budget": 2,
+          "tau_settle": 0.3,
+          "tau_conf": 0.55,
+          "vanilla_rate": 0.65,
+          "policy_final_rate": 0.75,
+          "policy_any_visited_rate": 0.77,
+          "judge_calls_total": 28,
+          "judge_used_questions": 28,
+          "judge_correct_when_used": 3,
+          "judge_trigger_counts": {
+            "settled": 1,
+            "unsure": 27
+          },
+          "judge_call_rate": 0.28,
+          "sample_walks": [
+            {
+              "qi": 52,
+              "actions": [
+                "narrow"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": false
+            },
+            {
+              "qi": 53,
+              "actions": [
+                "narrow"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": false
+            },
+            {
+              "qi": 55,
+              "actions": [
+                "narrow",
+                "JUDGE[unsure]"
+              ],
+              "n_visited": 2,
+              "outcome": "wrong",
+              "judge_used": true
+            },
+            {
+              "qi": 60,
+              "actions": [
+                "narrow",
+                "JUDGE[unsure]"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": true
+            },
+            {
+              "qi": 62,
+              "actions": [
+                "narrow",
+                "JUDGE[unsure]"
+              ],
+              "n_visited": 2,
+              "outcome": "wrong",
+              "judge_used": true
+            },
+            {
+              "qi": 63,
+              "actions": [
+                "narrow"
+              ],
+              "n_visited": 2,
+              "outcome": "correct",
+              "judge_used": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

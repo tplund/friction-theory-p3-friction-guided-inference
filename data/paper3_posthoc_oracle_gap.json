@@ -1,0 +1,44 @@
+{
+  "cells": [
+    {
+      "cell": "qwen2.5-7B \u00d7 MATH-500",
+      "n": 76,
+      "vanilla_pct": 0.0,
+      "committed_pct": 0.0,
+      "oracle_pct": 0.0,
+      "remaining_headroom": 0.0
+    },
+    {
+      "cell": "Qwen3-235B \u00d7 SimpleQA",
+      "n": 4310,
+      "vanilla_pct": 41.577726218097446,
+      "committed_pct": 36.009280742459396,
+      "oracle_pct": 42.90023201856148,
+      "remaining_headroom": 6.890951276102086
+    },
+    {
+      "cell": "Qwen3-235B \u00d7 MMLU-Pro STEM",
+      "n": 6334,
+      "vanilla_pct": 55.24155352068203,
+      "committed_pct": 71.739816861383,
+      "oracle_pct": 86.84875276286706,
+      "remaining_headroom": 15.10893590148406
+    },
+    {
+      "cell": "LFM2 \u00d7 MMLU-Pro STEM",
+      "n": 4751,
+      "vanilla_pct": 33.76131340770364,
+      "committed_pct": 43.2119553778152,
+      "oracle_pct": 59.22963586613344,
+      "remaining_headroom": 16.01768048831824
+    },
+    {
+      "cell": "GPT-oss-20b \u00d7 GPQA",
+      "n": 198,
+      "vanilla_pct": 26.262626262626267,
+      "committed_pct": 31.818181818181817,
+      "oracle_pct": 33.83838383838384,
+      "remaining_headroom": 2.0202020202020243
+    }
+  ]
+}

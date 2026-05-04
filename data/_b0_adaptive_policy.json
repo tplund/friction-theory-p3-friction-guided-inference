@@ -1,0 +1,430 @@
+{
+  "train_phase": "smoke",
+  "test_phase": "smoke",
+  "max_depth": 4,
+  "results": {
+    "cogito_671b": {
+      "n_train": 772,
+      "n_test": 40,
+      "train_strategy_pred_acc": 0.557,
+      "feature_importance": [
+        [
+          "jaccard_dist",
+          0.3269
+        ],
+        [
+          "response_len",
+          0.3125
+        ],
+        [
+          "token_overlap",
+          0.2367
+        ],
+        [
+          "mean_cr",
+          0.0668
+        ],
+        [
+          "abs_cr_delta",
+          0.057
+        ],
+        [
+          "bucket_LOW",
+          0.0
+        ]
+      ],
+      "metrics": {
+        "n": 40,
+        "vanilla_rate": 0.475,
+        "policy_final_rate": 0.675,
+        "policy_any_visited_rate": 0.675,
+        "fixed_best_oracle_rate": 0.8,
+        "oracle_union_rate": 0.8,
+        "sample_walks": [
+          {
+            "qi": 50,
+            "strategies": [
+              "challenge",
+              "narrow",
+              "step_by_step"
+            ],
+            "outcome": "wrong"
+          },
+          {
+            "qi": 57,
+            "strategies": [
+              "challenge"
+            ],
+            "outcome": "correct"
+          },
+          {
+            "qi": 58,
+            "strategies": [
+              "challenge",
+              "narrow",
+              "step_by_step"
+            ],
+            "outcome": "wrong"
+          },
+          {
+            "qi": 72,
+            "strategies": [
+              "challenge",
+              "step_by_step"
+            ],
+            "outcome": "correct"
+          },
+          {
+            "qi": 93,
+            "strategies": [
+              "challenge",
+              "narrow",
+              "step_by_step"
+            ],
+            "outcome": "correct"
+          }
+        ]
+      },
+      "tree_path": "data\\results\\_b0_adaptive_trees\\cogito_671b.txt"
+    },
+    "qwen3_235b": {
+      "n_train": 742,
+      "n_test": 40,
+      "train_strategy_pred_acc": 0.5633,
+      "feature_importance": [
+        [
+          "jaccard_dist",
+          0.3402
+        ],
+        [
+          "mean_cr",
+          0.2365
+        ],
+        [
+          "response_len",
+          0.2123
+        ],
+        [
+          "token_overlap",
+          0.1488
+        ],
+        [
+          "abs_cr_delta",
+          0.0622
+        ],
+        [
+          "bucket_LOW",
+          0.0
+        ]
+      ],
+      "metrics": {
+        "n": 40,
+        "vanilla_rate": 0.625,
+        "policy_final_rate": 0.875,
+        "policy_any_visited_rate": 0.875,
+        "fixed_best_oracle_rate": 0.925,
+        "oracle_union_rate": 0.925,
+        "sample_walks": [
+          {
+            "qi": 50,
+            "strategies": [
+              "narrow",
+              "challenge",
+              "step_by_step"
+            ],
+            "outcome": "correct"
+          },
+          {
+            "qi": 57,
+            "strategies": [
+              "narrow",
+              "step_by_step"
+            ],
+            "outcome": "correct"
+          },
+          {
+            "qi": 58,
+            "strategies": [
+              "narrow",
+              "step_by_step"
+            ],
+            "outcome": "correct"
+          },
+          {
+            "qi": 72,
+            "strategies": [
+              "narrow"
+            ],
+            "outcome": "correct"
+          },
+          {
+            "qi": 93,
+            "strategies": [
+              "narrow",
+              "step_by_step"
+            ],
+            "outcome": "correct"
+          }
+        ]
+      },
+      "tree_path": "data\\results\\_b0_adaptive_trees\\qwen3_235b.txt"
+    },
+    "deepseek_v3p1": {
+      "n_train": 754,
+      "n_test": 40,
+      "train_strategy_pred_acc": 0.5955,
+      "feature_importance": [
+        [
+          "response_len",
+          0.2808
+        ],
+        [
+          "token_overlap",
+          0.2344
+        ],
+        [
+          "jaccard_dist",
+          0.1842
+        ],
+        [
+          "mean_cr",
+          0.1521
+        ],
+        [
+          "abs_cr_delta",
+          0.1485
+        ],
+        [
+          "bucket_LOW",
+          0.0
+        ]
+      ],
+      "metrics": {
+        "n": 40,
+        "vanilla_rate": 0.25,
+        "policy_final_rate": 0.625,
+        "policy_any_visited_rate": 0.625,
+        "fixed_best_oracle_rate": 0.675,
+        "oracle_union_rate": 0.675,
+        "sample_walks": [
+          {
+            "qi": 50,
+            "strategies": [
+              "challenge",
+              "narrow",
+              "step_by_step"
+            ],
+            "outcome": "wrong"
+          },
+          {
+            "qi": 57,
+            "strategies": [
+              "challenge",
+              "narrow"
+            ],
+            "outcome": "correct"
+          },
+          {
+            "qi": 58,
+            "strategies": [
+              "challenge",
+              "step_by_step",
+              "narrow"
+            ],
+            "outcome": "wrong"
+          },
+          {
+            "qi": 72,
+            "strategies": [
+              "challenge",
+              "narrow"
+            ],
+            "outcome": "correct"
+          },
+          {
+            "qi": 93,
+            "strategies": [
+              "challenge",
+              "step_by_step",
+              "narrow"
+            ],
+            "outcome": "correct"
+          }
+        ]
+      },
+      "tree_path": "data\\results\\_b0_adaptive_trees\\deepseek_v3p1.txt"
+    },
+    "llama33_70b_instruct": {
+      "n_train": 712,
+      "n_test": 40,
+      "train_strategy_pred_acc": 0.5913,
+      "feature_importance": [
+        [
+          "jaccard_dist",
+          0.3298
+        ],
+        [
+          "mean_cr",
+          0.2466
+        ],
+        [
+          "abs_cr_delta",
+          0.2323
+        ],
+        [
+          "response_len",
+          0.0818
+        ],
+        [
+          "token_overlap",
+          0.0815
+        ],
+        [
+          "bucket_EVEN",
+          0.028
+        ]
+      ],
+      "metrics": {
+        "n": 40,
+        "vanilla_rate": 0.45,
+        "policy_final_rate": 0.575,
+        "policy_any_visited_rate": 0.6,
+        "fixed_best_oracle_rate": 0.675,
+        "oracle_union_rate": 0.675,
+        "sample_walks": [
+          {
+            "qi": 50,
+            "strategies": [
+              "step_by_step",
+              "challenge",
+              "narrow"
+            ],
+            "outcome": "wrong"
+          },
+          {
+            "qi": 57,
+            "strategies": [
+              "challenge",
+              "narrow",
+              "step_by_step"
+            ],
+            "outcome": "wrong"
+          },
+          {
+            "qi": 58,
+            "strategies": [
+              "step_by_step",
+              "challenge",
+              "narrow"
+            ],
+            "outcome": "wrong"
+          },
+          {
+            "qi": 72,
+            "strategies": [
+              "challenge",
+              "narrow"
+            ],
+            "outcome": "correct"
+          },
+          {
+            "qi": 93,
+            "strategies": [
+              "step_by_step",
+              "challenge"
+            ],
+            "outcome": "correct"
+          }
+        ]
+      },
+      "tree_path": "data\\results\\_b0_adaptive_trees\\llama33_70b_instruct.txt"
+    },
+    "qwen3_8b": {
+      "n_train": 732,
+      "n_test": 40,
+      "train_strategy_pred_acc": 0.5656,
+      "feature_importance": [
+        [
+          "response_len",
+          0.302
+        ],
+        [
+          "abs_cr_delta",
+          0.2489
+        ],
+        [
+          "jaccard_dist",
+          0.2247
+        ],
+        [
+          "mean_cr",
+          0.1284
+        ],
+        [
+          "token_overlap",
+          0.096
+        ],
+        [
+          "bucket_LOW",
+          0.0
+        ]
+      ],
+      "metrics": {
+        "n": 40,
+        "vanilla_rate": 0.175,
+        "policy_final_rate": 0.425,
+        "policy_any_visited_rate": 0.45,
+        "fixed_best_oracle_rate": 0.5,
+        "oracle_union_rate": 0.5,
+        "sample_walks": [
+          {
+            "qi": 50,
+            "strategies": [
+              "narrow",
+              "step_by_step",
+              "challenge"
+            ],
+            "outcome": "wrong"
+          },
+          {
+            "qi": 57,
+            "strategies": [
+              "narrow",
+              "step_by_step",
+              "challenge"
+            ],
+            "outcome": "wrong"
+          },
+          {
+            "qi": 58,
+            "strategies": [
+              "narrow",
+              "challenge",
+              "step_by_step"
+            ],
+            "outcome": "wrong"
+          },
+          {
+            "qi": 72,
+            "strategies": [
+              "narrow",
+              "step_by_step",
+              "challenge"
+            ],
+            "outcome": "wrong"
+          },
+          {
+            "qi": 93,
+            "strategies": [
+              "narrow",
+              "step_by_step",
+              "challenge"
+            ],
+            "outcome": "wrong"
+          }
+        ]
+      },
+      "tree_path": "data\\results\\_b0_adaptive_trees\\qwen3_8b.txt"
+    }
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "cogito_671b": {
+    "rows": [
+      {
+        "target": "simpleqa_obscure",
+        "foreign_source": "truthfulqa",
+        "acc_specific": 0.3,
+        "acc_foreign_thr_specific_map": 0.34,
+        "acc_specific_thr_foreign_map": 0.3,
+        "acc_full_foreign": 0.3,
+        "delta_thresholds_pp": -4.0000000000000036,
+        "delta_strategymap_pp": 0.0,
+        "delta_joint_pp": 0.0
+      },
+      {
+        "target": "truthfulqa",
+        "foreign_source": "simpleqa_obscure",
+        "acc_specific": 0.86,
+        "acc_foreign_thr_specific_map": 0.86,
+        "acc_specific_thr_foreign_map": 0.5,
+        "acc_full_foreign": 0.86,
+        "delta_thresholds_pp": 0.0,
+        "delta_strategymap_pp": 36.0,
+        "delta_joint_pp": 0.0
+      }
+    ],
+    "mean_abs_delta_thr_pp": 2.0000000000000018,
+    "mean_abs_delta_map_pp": 18.0,
+    "mean_abs_delta_joint_pp": 0.0
+  },
+  "deepseek_v3p1": {
+    "rows": [
+      {
+        "target": "simpleqa_obscure",
+        "foreign_source": "truthfulqa",
+        "acc_specific": 0.42,
+        "acc_foreign_thr_specific_map": 0.4,
+        "acc_specific_thr_foreign_map": 0.46,
+        "acc_full_foreign": 0.5,
+        "delta_thresholds_pp": 1.9999999999999962,
+        "delta_strategymap_pp": -4.0000000000000036,
+        "delta_joint_pp": -8.000000000000002
+      },
+      {
+        "target": "truthfulqa",
+        "foreign_source": "simpleqa_obscure",
+        "acc_specific": 0.38,
+        "acc_foreign_thr_specific_map": 0.26,
+        "acc_specific_thr_foreign_map": 0.4,
+        "acc_full_foreign": 0.26,
+        "delta_thresholds_pp": 12.0,
+        "delta_strategymap_pp": -2.0000000000000018,
+        "delta_joint_pp": 12.0
+      }
+    ],
+    "mean_abs_delta_thr_pp": 6.999999999999998,
+    "mean_abs_delta_map_pp": 3.0000000000000027,
+    "mean_abs_delta_joint_pp": 10.0
+  },
+  "llama33_70b_instruct": {
+    "rows": [
+      {
+        "target": "simpleqa_obscure",
+        "foreign_source": "truthfulqa",
+        "acc_specific": 0.3,
+        "acc_foreign_thr_specific_map": 0.32,
+        "acc_specific_thr_foreign_map": 0.26,
+        "acc_full_foreign": 0.28,
+        "delta_thresholds_pp": -2.0000000000000018,
+        "delta_strategymap_pp": 3.9999999999999982,
+        "delta_joint_pp": 1.9999999999999962
+      },
+      {
+        "target": "truthfulqa",
+        "foreign_source": "simpleqa_obscure",
+        "acc_specific": 0.8,
+        "acc_foreign_thr_specific_map": 0.62,
+        "acc_specific_thr_foreign_map": 0.44,
+        "acc_full_foreign": 0.74,
+        "delta_thresholds_pp": 18.000000000000004,
+        "delta_strategymap_pp": 36.00000000000001,
+        "delta_joint_pp": 6.000000000000005
+      }
+    ],
+    "mean_abs_delta_thr_pp": 10.000000000000004,
+    "mean_abs_delta_map_pp": 20.000000000000004,
+    "mean_abs_delta_joint_pp": 4.000000000000001
+  },
+  "qwen3_235b": {
+    "rows": [
+      {
+        "target": "gpqa",
+        "foreign_source": "simpleqa_obscure",
+        "acc_specific": 0.41916167664670656,
+        "acc_foreign_thr_specific_map": 0.4550898203592814,
+        "acc_specific_thr_foreign_map": 0.33532934131736525,
+        "acc_full_foreign": 0.4491017964071856,
+        "delta_thresholds_pp": -3.592814371257486,
+        "delta_strategymap_pp": 8.383233532934131,
+        "delta_joint_pp": -2.9940119760479056
+      },
+      {
+        "target": "gpqa",
+        "foreign_source": "truthfulqa",
+        "acc_specific": 0.41916167664670656,
+        "acc_foreign_thr_specific_map": 0.41916167664670656,
+        "acc_specific_thr_foreign_map": 0.41916167664670656,
+        "acc_full_foreign": 0.41916167664670656,
+        "delta_thresholds_pp": 0.0,
+        "delta_strategymap_pp": 0.0,
+        "delta_joint_pp": 0.0
+      },
+      {
+        "target": "simpleqa_obscure",
+        "foreign_source": "gpqa",
+        "acc_specific": 0.64,
+        "acc_foreign_thr_specific_map": 0.64,
+        "acc_specific_thr_foreign_map": 0.5,
+        "acc_full_foreign": 0.52,
+        "delta_thresholds_pp": 0.0,
+        "delta_strategymap_pp": 14.000000000000002,
+        "delta_joint_pp": 12.0
+      },
+      {
+        "target": "simpleqa_obscure",
+        "foreign_source": "truthfulqa",
+        "acc_specific": 0.64,
+        "acc_foreign_thr_specific_map": 0.64,
+        "acc_specific_thr_foreign_map": 0.5,
+        "acc_full_foreign": 0.52,
+        "delta_thresholds_pp": 0.0,
+        "delta_strategymap_pp": 14.000000000000002,
+        "delta_joint_pp": 12.0
+      },
+      {
+        "target": "truthfulqa",
+        "foreign_source": "gpqa",
+        "acc_specific": 0.98,
+        "acc_foreign_thr_specific_map": 0.98,
+        "acc_specific_thr_foreign_map": 0.98,
+        "acc_full_foreign": 0.98,
+        "delta_thresholds_pp": 0.0,
+        "delta_strategymap_pp": 0.0,
+        "delta_joint_pp": 0.0
+      },
+      {
+        "target": "truthfulqa",
+        "foreign_source": "simpleqa_obscure",
+        "acc_specific": 0.98,
+        "acc_foreign_thr_specific_map": 0.88,
+        "acc_specific_thr_foreign_map": 0.84,
+        "acc_full_foreign": 0.88,
+        "delta_thresholds_pp": 9.999999999999998,
+        "delta_strategymap_pp": 14.000000000000002,
+        "delta_joint_pp": 9.999999999999998
+      }
+    ],
+    "mean_abs_delta_thr_pp": 2.265469061876247,
+    "mean_abs_delta_map_pp": 8.397205588822356,
+    "mean_abs_delta_joint_pp": 6.165668662674651
+  },
+  "qwen3_8b": {
+    "rows": [
+      {
+        "target": "simpleqa_obscure",
+        "foreign_source": "truthfulqa",
+        "acc_specific": 0.02,
+        "acc_foreign_thr_specific_map": 0.04,
+        "acc_specific_thr_foreign_map": 0.02,
+        "acc_full_foreign": 0.04,
+        "delta_thresholds_pp": -2.0,
+        "delta_strategymap_pp": 0.0,
+        "delta_joint_pp": -2.0
+      },
+      {
+        "target": "truthfulqa",
+        "foreign_source": "simpleqa_obscure",
+        "acc_specific": 0.46,
+        "acc_foreign_thr_specific_map": 0.26,
+        "acc_specific_thr_foreign_map": 0.52,
+        "acc_full_foreign": 0.36,
+        "delta_thresholds_pp": 20.0,
+        "delta_strategymap_pp": -6.0,
+        "delta_joint_pp": 10.000000000000004
+      }
+    ],
+    "mean_abs_delta_thr_pp": 11.0,
+    "mean_abs_delta_map_pp": 3.0,
+    "mean_abs_delta_joint_pp": 6.000000000000002
+  }
+}
