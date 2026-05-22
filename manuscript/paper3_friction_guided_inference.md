@@ -224,6 +224,8 @@ Our pipeline lifts this to 51.8% on held-out questions (+10.6 pp [+9.1, +12.1]),
 
 During development we discovered a systematic judge-bias: an initial judge prompt rated step-by-step responses INCORRECT 18× more often than vanilla responses, even when the correct answer appeared in the text. The judge penalised "incomplete reasoning" in longer responses. We fixed the prompt to instruct the judge to search the entire response text for the reference answer, and re-graded all calibration data. This is documented as Rule 13d in our quality assurance framework.
 
+**Cross-judge validation.** Because the corrected judge could in principle carry a residual bias of its own, we validated it against an independent judge model from a different family. A stratified sample of 400 SimpleQA responses (200 graded correct, 200 graded incorrect by the primary Claude-Haiku judge) was re-graded by GPT-4o-mini. The two judges agree on 99.0% of cases (Cohen's κ = 0.980, near-perfect on the Landis-Koch scale), and the residual disagreement is symmetric (0.5% in each direction) — no evidence of a systematic bias in either judge. A blinded human audit would strengthen this further and is left for future work, but two independent judge model families agreeing at κ = 0.98 substantially corroborates the SimpleQA grading.
+
 **Pipeline configuration.** Step-by-step is the only constructive strategy (+29 net rescues vs regressions in calibration). The pipeline runs vanilla + step-by-step (2 rounds) and commits the step-by-step response. As shown in the ablation (§5.1), simply trusting the strategy response (52.5%) slightly outperforms CR-weighted commit (50.7%). The deployed pipeline uses direct strategy commit.
 
 ### 4.4 MMLU-Pro STEM: Qwen3-235B (+7.7 pp) and LiquidAI (+8.1 pp)
@@ -329,6 +331,10 @@ The pipeline's second mechanism is abstention: rather than commit to an answer, 
 | GPQA Diamond / GPT-oss-20B | 198 | 0.412 | **0.467** | 0.467 |
 
 Two findings follow, and we state both plainly because the first runs against a natural expectation. First, **CR is not the strongest signal.** Shannon entropy equals or exceeds CR on all five cells. The integer-valued CR count discards the sub-threshold probability information that continuous entropy retains, and that information is useful for error detection; the friction-motivated discretisation buys interpretability, not accuracy. Second, **Shannon entropy is the only signal robust across all five cells.** Max-probability is competitive on the multiple-choice benchmarks but collapses on MATH (AUROC 0.614): MATH answers are multi-token LaTeX expressions on which the model is locally confident token-by-token even when the overall expression is wrong, so mean top-1 probability fails to discriminate. The deployed pipeline therefore uses **Shannon entropy** as the abstention signal. CR is retained in this paper as the friction-theory-motivated quantity and an interpretable integer-valued uncertainty readout, but it is not the deployed abstention signal and we do not claim it is a superior one.
+
+![Figure 5: Abstention-signal comparison](figures/fig5_signal_comparison.png)
+
+**Figure 5.** AUROC for error detection — CR, Shannon entropy, and max-probability — across the five cells. Shannon entropy is best or tied on every cell; CR is never best; max-probability collapses on MATH (multi-token LaTeX answers). On GPQA all three signals fall to or below the chance line (0.5): no logprob-derived signal detects errors on that benchmark.
 
 **Risk-coverage.** Ranking by entropy and abstaining on the most-uncertain fraction, accuracy on the answered subset rises monotonically with the abstention rate:
 

@@ -18,7 +18,7 @@ import random
 import statistics
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FIG_DIR = os.path.join(ROOT, "docs", "figures")
+FIG_DIR = os.path.join(ROOT, "figures")
 os.makedirs(FIG_DIR, exist_ok=True)
 
 try:
@@ -165,13 +165,14 @@ def fig3_strategy_heatmap():
 # Figure 4: Abstention curve
 # ============================================================
 def fig4_abstention():
-    # Pre-computed from analysis
+    # Success rate (correct OR correct abstention), entropy-ranked abstention.
+    # Fresh re-run, Paper 3 v2 §5.2 (paper3_phase2_abstention_analysis.json).
     abstention_data = {
-        "MATH Qwen2.5-7B": [(0, 46.9), (10, 53.4), (20, 60.3), (30, 66.4)],
-        "SQA Qwen3-235B": [(0, 41.6), (10, 49.4), (20, 55.5), (30, 61.8)],
-        "MMLU-Pro Qwen3": [(0, 55.2), (10, 60.8), (20, 61.7), (30, 61.4)],
-        "MMLU-Pro LiquidAI": [(0, 33.8), (10, 40.1), (20, 45.4), (30, 50.3)],
-        "GPQA GPT-oss": [(0, 26.3), (10, 31.3), (20, 40.4), (30, 48.5)],
+        "MATH Qwen2.5-7B": [(0, 46.9), (10, 55.3), (20, 60.7), (30, 66.4)],
+        "SQA Qwen3-235B": [(0, 43.2), (10, 51.6), (20, 58.9), (30, 65.7)],
+        "MMLU-Pro Qwen3": [(0, 55.0), (10, 60.3), (20, 64.0), (30, 62.1)],
+        "MMLU-Pro LiquidAI": [(0, 33.7), (10, 40.3), (20, 46.7), (30, 52.3)],
+        "GPQA GPT-oss": [(0, 42.9), (10, 44.9), (20, 47.0), (30, 46.5)],
     }
 
     fig, ax = plt.subplots(figsize=(8, 5))
@@ -184,7 +185,7 @@ def fig4_abstention():
 
     ax.set_xlabel("Abstention rate (%)")
     ax.set_ylabel("Success rate (% correct + correctly abstained)")
-    ax.set_title("CR-Based Abstention: Success Rate vs Coverage")
+    ax.set_title("Entropy-Based Abstention: Success Rate vs Coverage")
     ax.legend(fontsize=8, loc="upper left")
     ax.grid(alpha=0.3)
     ax.set_xlim(-1, 32)
@@ -197,39 +198,38 @@ def fig4_abstention():
 
 
 # ============================================================
-# Figure 5: Combined strategy + abstention comparison
+# Figure 5: Abstention-signal comparison (AUROC for error detection)
 # ============================================================
-def fig5_combined():
-    cells = ["SQA\nQwen3", "MMLU-Pro\nQwen3", "MMLU-Pro\nLiquidAI", "GPQA\nGPT-oss"]
-    vanilla = [41.6, 55.2, 33.8, 26.3]
-    strategy_only = [52.5, 64.8, 48.1, 31.3]
-    abstention_only = [55.5, 61.7, 45.4, 40.4]
-    combined = [57.2, 67.4, 55.0, 45.5]
+def fig5_signal_comparison():
+    # AUROC for error detection, fresh re-run data, Paper 3 v2 §5.2.
+    # (paper3_phase2_abstention_analysis.json)
+    cells = ["MATH\nQwen2.5-7B", "SQA\nQwen3", "MMLU-Pro\nQwen3",
+             "MMLU-Pro\nLiquidAI", "GPQA\nGPT-oss"]
+    cr = [0.746, 0.771, 0.651, 0.636, 0.412]
+    entropy = [0.754, 0.818, 0.690, 0.692, 0.467]
+    maxp = [0.614, 0.819, 0.686, 0.688, 0.467]
 
     fig, ax = plt.subplots(figsize=(9, 5))
     x = range(len(cells))
-    w = 0.2
+    w = 0.26
 
-    ax.bar([i - 1.5*w for i in x], vanilla, w, label="Vanilla", color="#95A5A6", alpha=0.8)
-    ax.bar([i - 0.5*w for i in x], strategy_only, w, label="Strategy only", color="#4A90D9", alpha=0.8)
-    ax.bar([i + 0.5*w for i in x], abstention_only, w, label="Abstention only", color="#F39C12", alpha=0.8)
-    ax.bar([i + 1.5*w for i in x], combined, w, label="Strategy + Abstention", color="#E74C3C", alpha=0.8)
+    ax.bar([i - w for i in x], cr, w, label="CR (competing routes)", color="#9B59B6", alpha=0.85)
+    ax.bar([i for i in x], entropy, w, label="Shannon entropy", color="#2ECC71", alpha=0.85)
+    ax.bar([i + w for i in x], maxp, w, label="Max-probability", color="#F39C12", alpha=0.85)
 
-    # Add combined lift annotations
-    for i in range(len(cells)):
-        lift = combined[i] - vanilla[i]
-        ax.annotate(f"+{lift:.1f}pp", xy=(i + 1.5*w, combined[i] + 1), ha="center", fontsize=8, fontweight="bold", color="#E74C3C")
+    ax.axhline(0.5, color="#888888", linestyle="--", linewidth=1)
+    ax.annotate("chance (0.5)", xy=(len(cells) - 1.4, 0.51), fontsize=8, color="#666666")
 
-    ax.set_ylabel("Success rate (%)")
-    ax.set_title("Combined Strategy + Abstention: Best of Both Worlds")
-    ax.set_xticks(x)
+    ax.set_ylabel("AUROC (error detection)")
+    ax.set_title("Abstention-Signal Comparison: CR vs Entropy vs Max-probability")
+    ax.set_xticks(list(x))
     ax.set_xticklabels(cells, fontsize=9)
-    ax.legend(fontsize=8)
+    ax.legend(fontsize=8, loc="upper right")
     ax.grid(axis="y", alpha=0.3)
-    ax.set_ylim(0, 80)
+    ax.set_ylim(0.35, 0.90)
 
     plt.tight_layout()
-    path = os.path.join(FIG_DIR, "fig5_combined.png")
+    path = os.path.join(FIG_DIR, "fig5_signal_comparison.png")
     plt.savefig(path)
     plt.close()
     print(f"  Saved {path}")
@@ -321,6 +321,6 @@ if __name__ == "__main__":
     fig2_depth_plateaus()
     fig3_strategy_heatmap()
     fig4_abstention()
-    fig5_combined()
+    fig5_signal_comparison()
     fig6_semantics_factorial()
     print(f"\nAll figures saved to {FIG_DIR}/")
