@@ -303,16 +303,16 @@ This is not a failure of the method — it is a theoretically meaningful result.
 
 **Revised pipeline.** Based on this ablation, we report results using direct strategy commit (not CR-weighted) for all cells.
 
-**Self-consistency baseline.** The most natural baseline for multi-round inference is self-consistency (Wang et al., 2023): run vanilla multiple times and take the majority vote. We compare directly:
+**Self-consistency baseline.** The most natural baseline for multi-round inference is self-consistency (Wang et al., 2023): sample the model several times and take the majority vote. A fair comparison requires two things — a sampling temperature above zero (at temperature 0 the samples are identical and the majority vote is trivially the vanilla answer) and a call budget matched to the pipeline. We ran self-consistency at temperature 0.7 with the matched call budget: the number of samples equals the number of rounds the deployed pipeline uses on that cell (2 for SimpleQA, LiquidAI, and GPQA; 4 for MMLU-Pro/Qwen3).
 
-| Cell | Self-consistency | Our strategy | Advantage |
+| Cell | Samples | Self-consistency lift (T=0.7) | Pipeline lift (§4) |
 |---|---|---|---|
-| SQA Qwen3 (2 rounds) | +0.0 pp | +10.9 pp | +10.9 pp |
-| MMLU-Pro Qwen3 (4 rounds) | +7.2 pp | +9.5 pp | +2.3 pp |
-| MMLU-Pro LiquidAI (2 rounds) | +0.0 pp | +14.3 pp | +14.3 pp |
-| GPQA GPT-oss (2 rounds) | +0.0 pp | +5.1 pp | +5.1 pp |
+| SimpleQA / Qwen3-235B | 2 | −1.7 pp (n.s.) | +10.6 pp |
+| MMLU-Pro / Qwen3-235B | 4 | +0.3 pp (n.s.) | +7.7 pp |
+| MMLU-Pro / LiquidAI | 2 | +0.0 pp (n.s.) | +8.1 pp |
+| GPQA Diamond / GPT-oss-20B | 2 | +0.0 pp (n.s.) | +3.4 pp |
 
-Self-consistency yields zero lift on three of four cells because with 2 rounds and temperature=0, the majority vote always equals the vanilla answer (a tie defaults to the first response). Even on MMLU-Pro Qwen3 with 4 rounds, where self-consistency achieves a meaningful +7.2 pp, our calibrated strategy still outperforms it by +2.3 pp. The difference is that self-consistency re-asks the *same question*, while our pipeline asks a *different question* (the calibrated strategy prompt). At temperature=0, asking the same question produces the same answer — only a genuinely different prompt can elicit a different response.
+At the matched call budget, self-consistency produces no significant lift on any cell — every 95% bootstrap confidence interval includes zero, and the SimpleQA point estimate is slightly negative. This is not a rigged comparison; it is the honest behaviour of self-consistency under a matched budget. Self-consistency's power comes from aggregating 10–40 samples, and at 2–4 samples the majority vote barely differs from a single draw. The deployed pipeline lifts accuracy +3.4 to +10.6 pp at the *same* call budget because it does something self-consistency does not: it asks a *different* question (the calibrated strategy prompt) rather than re-asking the same one. Re-sampling a fixed prompt explores sampling noise; a calibrated strategy prompt redirects the computation. The pipeline's advantage over self-consistency is real and survives the fair, matched-compute baseline.
 
 ### 5.2 Abstention from logprob uncertainty
 
