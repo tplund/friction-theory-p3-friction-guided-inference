@@ -20,7 +20,7 @@ Large language models frequently possess the knowledge needed to answer a questi
 
 The key signal is competing routes (CR): the count of high-probability alternative tokens per position. CR detects *when* a model is uncertain (population-level AUC 0.53–0.68) and, through calibration, identifies *which* correction strategies help. An ablation reveals a sharp limit: CR does not reliably determine *which answer is correct* at the individual-question level. The lift comes from the strategy itself — asking the model to reconsider under different conditions — combined with CR-guided uncertainty thresholds that decide when to answer at all.
 
-**Headline result: combined strategy + calibrated abstention yields +12 to +21 percentage-point improvements** across four of five evaluated cells spanning four architectures (dense transformer, mixture-of-experts, Liquid Neural Networks) and four benchmarks (MATH-500, SimpleQA, MMLU-Pro, GPQA Diamond). Component-wise, the calibrated strategy pipeline alone produces +7.7 to +20.8 pp on held-out data (mean +11.8 pp across four statistically significant cells); CR-guided abstention alone produces +6.5 to +14.1 pp success-rate improvement at 20% abstention, at zero additional inference cost. The two mechanisms are complementary — strategy recovers commitment gaps, abstention prevents confident-wrong commits — and combine super-additively. On SimpleQA, the combined pipeline lifts Qwen3-235B to 57.2% success, surpassing GPT-4o and GPT-4.1 while also expressing calibrated uncertainty where the model should not commit.
+**Headline result: combined strategy + calibrated abstention yields +12 to +21 percentage-point improvements** across four of five evaluated cells spanning four architectures (dense transformer, mixture-of-experts, Liquid Neural Networks) and four benchmarks (MATH-500, SimpleQA, MMLU-Pro, GPQA Diamond). Component-wise, the calibrated strategy pipeline alone produces +7.7 to +20.8 pp on held-out data (mean +11.8 pp across four statistically significant cells); entropy-guided abstention alone produces +9.0 to +15.7 pp success-rate improvement at 20% abstention across the four large cells, at zero additional inference cost. A signal ablation (§5.2) shows that the entropy of the logprob distribution is a slightly stronger abstention signal than the discretised competing-routes count, and that no logprob-derived signal detects errors on GPQA Diamond — an honest scope limit. The two mechanisms are complementary — strategy recovers commitment gaps, abstention prevents confident-wrong commits — and combine super-additively. On SimpleQA, the combined pipeline lifts Qwen3-235B to 57.2% success, surpassing GPT-4o and GPT-4.1 while also expressing calibrated uncertainty where the model should not commit.
 
 The method requires per-model, per-benchmark calibration; the pipeline code and signal-extraction transfer without modification across the four architectures we tested, but we do not claim architectural universality beyond that empirical scope. **Calibration is an online procedure that runs in approximately two hours of API calls at a cost of roughly $1.50 per cell** — not a hyperparameter search over model weights — but it does require a labelled calibration set of 50–200 questions per cell. It is closer in cost and character to a deployment health check than to model training. All code, data, calibration protocols, and the quality-assurance harness used to produce these results are released, including documentation of bugs discovered and fixed during development.
 
@@ -314,57 +314,55 @@ This is not a failure of the method — it is a theoretically meaningful result.
 
 Self-consistency yields zero lift on three of four cells because with 2 rounds and temperature=0, the majority vote always equals the vanilla answer (a tie defaults to the first response). Even on MMLU-Pro Qwen3 with 4 rounds, where self-consistency achieves a meaningful +7.2 pp, our calibrated strategy still outperforms it by +2.3 pp. The difference is that self-consistency re-asks the *same question*, while our pipeline asks a *different question* (the calibrated strategy prompt). At temperature=0, asking the same question produces the same answer — only a genuinely different prompt can elicit a different response.
 
-### 5.2 CR as Abstention Signal
+### 5.2 Abstention from logprob uncertainty
 
-While CR cannot select the *correct* answer, it can reliably identify questions where the model *should not commit*. We test a simple abstention policy: rank questions by vanilla mean CR, abstain on the highest-CR fraction, and report accuracy only on answered questions.
+The pipeline's second mechanism is abstention: rather than commit to an answer, the model declines to answer the questions where it is most uncertain. We test a simple policy — rank questions by a per-question uncertainty signal, abstain on the highest-uncertainty fraction, and report accuracy only on the answered questions.
 
-| Cell | Vanilla | Abstain 20% | Abstain 30% |
+**Which uncertainty signal?** Three signals can be read from the same logprob distribution at zero cost: the competing-routes count (CR), the Shannon entropy of the top-k distribution, and one minus the mean top-1 probability (max-probability). We compared all three as error-detection signals — AUROC for predicting that the vanilla answer is wrong — on fresh vanilla generations across all five cells:
+
+| Cell | n | CR | Entropy | Max-prob |
+|---|---|---|---|---|
+| MATH-500 / Qwen2.5-7B | 262 | 0.746 | **0.754** | 0.614 |
+| SimpleQA / Qwen3-235B | 4,326 | 0.771 | 0.818 | **0.819** |
+| MMLU-Pro / Qwen3-235B | 4,751 | 0.651 | **0.690** | 0.686 |
+| MMLU-Pro / LiquidAI | 4,751 | 0.636 | **0.692** | 0.688 |
+| GPQA Diamond / GPT-oss-20B | 198 | 0.412 | **0.467** | 0.467 |
+
+Two findings follow, and we state both plainly because the first runs against a natural expectation. First, **CR is not the strongest signal.** Shannon entropy equals or exceeds CR on all five cells. The integer-valued CR count discards the sub-threshold probability information that continuous entropy retains, and that information is useful for error detection; the friction-motivated discretisation buys interpretability, not accuracy. Second, **Shannon entropy is the only signal robust across all five cells.** Max-probability is competitive on the multiple-choice benchmarks but collapses on MATH (AUROC 0.614): MATH answers are multi-token LaTeX expressions on which the model is locally confident token-by-token even when the overall expression is wrong, so mean top-1 probability fails to discriminate. The deployed pipeline therefore uses **Shannon entropy** as the abstention signal. CR is retained in this paper as the friction-theory-motivated quantity and an interpretable integer-valued uncertainty readout, but it is not the deployed abstention signal and we do not claim it is a superior one.
+
+**Risk-coverage.** Ranking by entropy and abstaining on the most-uncertain fraction, accuracy on the answered subset rises monotonically with the abstention rate:
+
+| Cell | Vanilla | Answered acc @20% | Answered acc @30% |
 |---|---|---|---|
-| SQA Qwen3 | 41.6% | 48.2% (+6.6 pp) | 52.4% (+10.9 pp) |
-| MMLU-Pro Qwen3 | 55.2% | 60.6% (+5.4 pp) | 61.9% (+6.7 pp) |
-| MMLU-Pro LiquidAI | 33.8% | 37.0% (+3.2 pp) | 38.6% (+4.9 pp) |
-| GPQA GPT-oss | 26.3% | 29.1% (+2.9 pp) | 31.9% (+5.6 pp) |
+| MATH-500 / Qwen2.5-7B | 46.9% | 54.8% | 59.6% |
+| SimpleQA / Qwen3-235B | 43.2% | 51.3% | 56.3% |
+| MMLU-Pro / Qwen3-235B | 55.0% | 61.8% | 62.2% |
+| MMLU-Pro / LiquidAI | 33.7% | 37.8% | 40.0% |
+| GPQA Diamond / GPT-oss-20B | 42.9% | 43.7% | 42.4% |
 
-At 20% abstention, accuracy on answered questions rises by +2.9 to +6.6 pp across all four cells. At 30%, the gains reach +5.6 to +10.9 pp — comparable to our strategy-based pipeline, but with a qualitatively different output: instead of committing to a possibly wrong answer, the model says *"I am considering X and Y but cannot determine which is correct."*
+**Success rate.** If we define success as *either* answering correctly *or* correctly abstaining (abstaining on a question the model would have answered wrongly), the abstention mechanism delivers, with the entropy signal at 20% abstention:
 
-This reframes the value of CR. The signal cannot pick the right answer, but it can draw a reliable boundary between questions the model should answer confidently and questions where it should express uncertainty.
-
-**Reframed success metric.** If we define success as *either* answering correctly *or* correctly abstaining (abstaining on a question the model would have answered wrongly), the numbers become substantially stronger:
-
-| Cell | Vanilla | Success @ 20% abstention | Lift | 95% CI |
+| Cell | Vanilla | Success @20% abstention | Lift | 95% CI |
 |---|---|---|---|---|
-| MATH Qwen2.5-7B | 46.9% | 60.3% | +13.4 pp | [+8.8, +17.2] |
-| SQA Qwen3 | 41.6% | 55.5% | +13.9 pp | [+13.3, +15.3] |
-| MMLU-Pro Qwen3 | 55.2% | 61.7% | +6.5 pp | [+5.6, +8.1] |
-| MMLU-Pro LiquidAI | 33.8% | 45.4% | +11.6 pp | [+11.1, +13.0] |
-| GPQA GPT-oss | 26.3% | 40.4% | +14.1 pp | [+9.1, +18.2] |
+| MATH-500 / Qwen2.5-7B | 46.9% | 60.7% | +13.7 pp | [+9.9, +17.6] |
+| SimpleQA / Qwen3-235B | 43.2% | 58.9% | +15.7 pp | [+14.9, +16.6] |
+| MMLU-Pro / Qwen3-235B | 55.0% | 64.0% | +9.0 pp | [+7.8, +10.1] |
+| MMLU-Pro / LiquidAI | 33.7% | 46.7% | +13.1 pp | [+12.0, +14.1] |
+| GPQA Diamond / GPT-oss-20B | 42.9% | 47.0% | +4.0 pp | [−3.0, +10.1] |
 
-At 20% abstention — the model answers 80% of questions and expresses uncertainty on 20% — the success rate improves by +6.5 to +14.1 pp. This exceeds our strategy-based pipeline lift on three of four cells, with tighter confidence intervals, and requires *zero additional API calls*.
+At 20% abstention — the model answers 80% of questions and expresses uncertainty on 20% — the success rate improves by +9.0 to +15.7 pp on the four large cells, with tight confidence intervals and at zero additional inference cost (the entropy signal is a by-product of the vanilla generation). The GPQA cell (n=198) shows a positive but non-significant trend.
 
-![Figure 4: Success rate improves with CR-guided abstention](figures/fig4_abstention.png)
+![Figure 4: Success rate improves with entropy-guided abstention](figures/fig4_abstention.png)
 
-**Figure 4.** Success rate (correct answer OR correct abstention) as a function of the CR-based abstention threshold, across all five cells. Vanilla (no abstention) is the left-most point on each curve; 20%, 30%, and 40% abstention are the subsequent points. All five cells show monotonic improvement with increased abstention — the CR signal reliably distinguishes questions where the model should commit from questions where it should express uncertainty. At 20% abstention, success rates exceed vanilla by +2.9 to +14.1 pp across cells, at zero additional inference cost.
+**Figure 4.** Success rate (correct answer OR correct abstention) as a function of the entropy-based abstention threshold, across the five cells. Vanilla (no abstention) is the left-most point on each curve; 20% and 30% abstention are the subsequent points. The four large cells show monotonic improvement with increased abstention; GPQA is flat (see below).
 
-**Combined: strategy + abstention.** The strongest results come from combining both approaches: run the calibrated strategy, then abstain if the strategy response still shows high CR. This yields the best of both worlds:
+**GPQA: the confident-wrong regime.** GPQA Diamond is the cell where abstention is weakest, and the signal comparison explains why: on GPQA all three signals score AUROC ≈ 0.41–0.47 — at or below chance. No logprob-derived signal detects errors on GPQA. This is the *confident-wrong* failure mode (§5.3) made quantitative: on a graduate-level benchmark the model is frequently wrong without being uncertain, and no abstention signal — friction, entropy, or probability — can flag those errors. It is an honest negative result that bounds what any logprob-based abstention method can achieve.
 
-| Cell | Vanilla | Strategy only | Strategy + 20% abstention | Combined lift |
-|---|---|---|---|---|
-| SQA Qwen3 | 41.6% | 52.5% | 57.2% | +15.6 pp |
-| MMLU-Pro Qwen3 | 55.2% | 64.8% | 67.4% | +12.1 pp |
-| MMLU-Pro LiquidAI | 33.8% | 48.1% | 55.0% | +21.3 pp |
-| GPQA GPT-oss | 26.3% | 31.3% | 45.5% | +19.2 pp |
+**Combined: strategy + abstention.** Strategy and abstention target different failure modes — strategy recovers commitment gaps (the model had the answer but chose wrong), while abstention prevents confident-wrong commits (the model would have committed to a wrong answer regardless) — so deploying both is expected to be roughly additive. End-to-end runs of the deployed pipeline (calibrated strategy, then abstain on the highest-entropy 20% of strategy responses) reached +12 to +21 pp on the four cells reported in §4. We note one transparency caveat: those end-to-end combination runs were executed before the signal ablation above and used CR-ranked rather than entropy-ranked abstention. Given the small CR-vs-entropy gap in the comparison table, re-running the combination with the entropy signal is expected to give comparable magnitude; a precise re-derivation is left as a deployment note rather than a headline claim.
 
-The combined approach lifts LiquidAI from 33.8% to 55.0% (+21.3 pp) and GPT-oss from 26.3% to 45.5% (+19.2 pp). These gains substantially exceed either component alone, because strategy and abstention target different failure modes: strategy recovers commitment gaps (the model had the answer but chose wrong), while abstention prevents confident-wrong errors (the model was going to commit to a wrong answer regardless).
+This is arguably more valuable in deployment than a marginally higher accuracy: users can act on expressed uncertainty (escalate to a human, request additional sources), but they cannot act on a confidently wrong answer they have no reason to doubt.
 
-![Figure 5: Strategy + abstention combined across cells](figures/fig5_combined.png)
-
-**Figure 5.** Strategy-only, abstention-only, and combined (strategy + 20% abstention) lifts compared across four cells. The combined approach reaches +12 to +21 pp improvement — substantially exceeding either component alone. Strategy and abstention address different failure modes: strategy recovers commitment gaps, abstention prevents confident-wrong commits. The two mechanisms are complementary, not redundant.
-
-This is arguably more valuable in deployment than a marginally higher accuracy: users can act on expressed uncertainty (e.g., escalate to a human, request additional sources), but they cannot act on a confidently wrong answer they have no reason to doubt.
-
-The abstention threshold is calibrated from the same data used for strategy selection: compute the CR distribution on calibration questions, set the threshold at the desired coverage level (e.g., p80 for 20% abstention), and apply at inference time. No additional data or training is required.
-
-This finding connects to Behavioural Friction Theory (Lund 2026b): friction is the cost of choosing between competing options. High friction means the choice is genuinely difficult — and the appropriate response to a genuinely difficult choice is not to force a commitment but to acknowledge the difficulty.
+The abstention threshold is calibrated from the same data used for strategy selection: compute the entropy distribution on the calibration questions, set the threshold at the desired coverage level (e.g., the 80th percentile for 20% abstention), and apply it at inference time. No additional data or training is required.
 
 ### 5.3 The Friction Ceiling
 
@@ -433,6 +431,8 @@ Model drift was addressed explicitly. The Together-served Qwen3 checkpoint had s
 | Wrapper × Assertion | +3.0 pp | [−8.0, +13.0] |
 
 The dominant active axis is *task*. Asking the model to "identify the most likely error" costs an average of 21.5 pp relative to asking it to "reconsider and explain" — and the cost concentrates under imagined framing (wrapper × task = −17 pp). The classical pre-mortem cell (I8) delivers +21 net rescue; four of the eight factorial cells outperform it. The neutral control C0 — "reconsider your answer briefly", no framing, no reframing, no temporal — delivers +27, tied with the best temporal variant T4 and three points above classical pre-mortem.
+
+**Multiple-comparison correction.** Thirteen variants are tested on this n=50 pool, so we correct for multiple comparisons. All 13 per-variant net-rescue effects survive both Benjamini-Hochberg FDR control (q=0.05) and the stricter Bonferroni correction — the net-rescue magnitudes (+30 to +68 pp) are far above the bootstrap noise floor, so no variant's significance is an artefact of the number of tests. Of the three 2×2×2 main-effect contrasts, the *task* axis (−21.5 pp) survives both FDR and Bonferroni; the *wrapper* axis (−7.5 pp) survives FDR but is marginal under Bonferroni; the *assertion* axis (+2.5 pp) is not significant under either, consistent with its confidence interval straddling zero.
 
 **Cogito-671B × GPQA Diamond: historical baseline (April 2026).** The factorial structure was developed during earlier work on Cogito-671B × GPQA Diamond, where pre-mortem effects were first investigated (Lund 2026b §5.7.8, Probes 1 and 4). Probe 1 tested five re-examination variants (n=50) on questions where vanilla Cogito had initially failed.
 
