@@ -10,10 +10,6 @@ Correspondence: tomas.lund@frictiontheory.org
 
 Web: https://frictiontheory.org
 
-*Acknowledgment: Claude (Anthropic, 2025–2026) acknowledged for research assistance. The theoretical claims, interpretations, and predictions are those of the author.*
-
----
-
 ## Abstract
 
 Large language models frequently possess the knowledge needed to answer a question correctly yet commit to the wrong response. This paper presents friction-guided inference, a method that uses the model's own logprob distribution — available at zero cost from any OpenAI-compatible API — to both **select calibrated correction strategies** *and* **identify questions where the model should abstain rather than commit**.
@@ -23,8 +19,6 @@ The key signal is competing routes (CR): the count of high-probability alternati
 **Headline result: combined strategy + calibrated abstention yields +12 to +21 percentage-point improvements** across four of five evaluated cells spanning four architectures (dense transformer, mixture-of-experts, Liquid Neural Networks) and four benchmarks (MATH-500, SimpleQA, MMLU-Pro, GPQA Diamond). Component-wise, the calibrated strategy pipeline alone produces +7.7 to +20.8 pp on held-out data (mean +11.8 pp across four statistically significant cells); entropy-guided abstention alone produces +9.0 to +15.7 pp success-rate improvement at 20% abstention across the four large cells, at zero additional inference cost. A signal ablation (§5.2) shows that the entropy of the logprob distribution is a slightly stronger abstention signal than the discretised competing-routes count, and that no logprob-derived signal detects errors on GPQA Diamond — an honest scope limit. The two mechanisms are complementary — strategy recovers commitment gaps, abstention prevents confident-wrong commits — and combine super-additively. On SimpleQA, the combined pipeline lifts Qwen3-235B to 57.2% success, surpassing GPT-4o and GPT-4.1 while also expressing calibrated uncertainty where the model should not commit.
 
 The method requires per-model, per-benchmark calibration; the pipeline code and signal-extraction transfer without modification across the four architectures we tested, but we do not claim architectural universality beyond that empirical scope. **Calibration is an online procedure that runs in approximately two hours of API calls at a cost of roughly $1.50 per cell** — not a hyperparameter search over model weights — but it does require a labelled calibration set of 50–200 questions per cell. It is closer in cost and character to a deployment health check than to model training. All code, data, calibration protocols, and the quality-assurance harness used to produce these results are released, including documentation of bugs discovered and fixed during development.
-
----
 
 ## 1. Introduction
 
@@ -71,8 +65,6 @@ The name "friction-guided" reflects the origin of this work in a companion theor
 
 All code, data, calibration protocols, audit rules, and pre-flight checks are publicly available at https://github.com/tplund/friction-theory-p3-friction-guided-inference.
 
----
-
 ## 2. Related Work
 
 **Self-consistency** (Wang et al., 2023) samples multiple chain-of-thought responses and takes the majority vote. This is conceptually related to our approach but differs in three ways: (1) self-consistency applies the same prompting strategy uniformly, while we select strategies per model via calibration; (2) self-consistency requires 10–40 samples, while we use 1–4; (3) self-consistency has no signal for when to stop sampling or when to abstain.
@@ -94,8 +86,6 @@ All code, data, calibration protocols, audit rules, and pre-flight checks are pu
 **NLP uncertainty and abstention beyond logprob calibration.** A broader literature in NLP (Liu et al., 2023; and related work from Yejin Choi's group) documents that language models systematically under-represent the uncertainty they actually face on commonsense and reasoning tasks. Our *confident-wrong* failure mode — model has low CR but the wrong answer — is the operational signature of this pattern on logprob-based signals. The abstention survey (Feng et al., 2025) catalogues the family of mitigation approaches; what the present framework adds is a structural account of why confident-wrong is structurally invisible to friction-based methods: friction signals computed from logprobs measure the *cost* of choosing between routes, not which route is correct, and confident-wrong is the regime where the model is not uncertain — it is wrong. This bounds the reachable ceiling for any friction-based selector and points toward orthogonal mechanisms (external verifiers, retrieval-augmented prompting, ambiguity-aware decoding) for the remaining headroom.
 
 **Calibration and interpretability of logprob signals.** The CR signal is computed directly from the top-k logprobs returned by every OpenAI-compatible API; no calibration training or model surgery is required. This places it in dialogue with the broader calibration and mechanistic-interpretability literature (e.g., Grosse et al., 2023, on influence functions for studying language-model behaviour at Anthropic, and related Anthropic work on how language models represent uncertainty internally). Our finding that per-token CR correlates with error rate at ρ ≈ −0.42 across architectures *without any calibration training* is an operational rather than mechanistic result: the underlying logprob distribution carries calibration information the model was not explicitly trained to expose. Whether this generalises to architectures whose logprob interface is more opaque (or unavailable through some commercial endpoints) is a question for future work; the present paper is restricted to models that expose top-k logprobs through their API.
-
----
 
 ## 3. Method
 
@@ -161,8 +151,6 @@ We developed a 23-rule quality assurance framework (PIPELINE_AUDIT_RULES.md) inf
 - **Pre-flight check**: all experiments must pass an automated gate (git clean, no oracle cheat, correct logprob format) before execution.
 
 These rules emerged from real failures encountered during development — data loss from file overwrites, inflated results from oracle cheating, and wrong strategy recommendations from judge bias. We release the audit harness with the code. We do not present it as a standalone research contribution — it is ordinary reproducibility engineering — but we describe it here because the validity of the results in §4 depends on these checks having been applied, and a practitioner re-running the pipeline will need the same safeguards.
-
----
 
 ## 4. Results
 
@@ -275,8 +263,6 @@ No single strategy is universally constructive. Step-by-step is the most broadly
 ![Figure 3: Strategy effectiveness heatmap across cells](figures/fig3_strategy_heatmap.png)
 
 **Figure 3.** Strategy effectiveness (net rescues minus regressions) across five cells × five candidate strategies, with green = constructive, red = destructive, grey = neutral or untested. Step-by-step is the most broadly useful strategy but is outperformed by verify on LiquidAI (+6 vs +2) and is *not* constructive on MMLU-Pro Qwen3 as a standalone. Pre-mortem is catastrophically destructive on GPT-oss-20B (−8) but constructive on MMLU-Pro Qwen3. Challenge is destructive on every cell except Cogito (not shown). No single strategy works everywhere — this heatmap is the primary quantitative argument for per-cell calibration.
-
----
 
 ## 5. Discussion
 
@@ -571,8 +557,6 @@ We are deliberately cautious about how far to generalise this. The empirical cla
 
 One empirical observation in §5.1 invites a theoretical reading: follow-up strategies (pre-mortem, re-examine) outperform standalone strategies when applied to already-answered questions. Under the companion framework (Lund 2026b §9.5), this is expected. There, the race architecture operates reflexively — what counts as "the task" the model is computing is itself an output of the model's ongoing parse over the prompt, so there is no fixed situation whose optimal strategy could be read off in one shot. Iterative re-matching, in which each round's intervention modifies what subsequent rounds condition on, is the framework-predicted shape of an effective pipeline. The empirical finding is consistent with this reading, and the clinical analogue is developed in a companion paper (Paper 8 §2.3). We present this as interpretation, not as evidence: the iterative-adaptive design is justified empirically by §4–§5.1 regardless of whether the reflexive-matching account is accepted.
 
----
-
 ## 6. Conclusion
 
 We have shown that large language models' logprob distributions contain a free, architecture-independent signal — competing routes — that serves three distinct functions at inference time: (1) calibrating which correction strategies help a given model, (2) identifying questions where the model should abstain rather than commit, and (3) detecting commitment gaps that can be recovered through re-prompting. On held-out data, a calibrated pipeline improves accuracy by +7.7 to +20.8 pp across four statistically significant cells spanning four architectures and four benchmarks (mean +11.8 pp). When abstention is permitted, CR-guided uncertainty thresholds improve success rates further at zero additional inference cost.
@@ -581,7 +565,9 @@ The method is practical: it requires no model training and no external verifier 
 
 The companion paper (Lund 2026b) offers a theoretical account of why a logprob-derived signal should behave this way; readers interested in that account will find it there. The contribution of the present paper is narrower and self-contained: a calibrated inference-time pipeline, validated on five model–benchmark cells, that delivers measurable and statistically significant accuracy gains on the models we evaluated, using a signal that is free to extract and a calibration procedure that costs roughly a dollar and two hours per cell.
 
----
+## Acknowledgments
+
+Claude (Anthropic, 2025–2026) acknowledged for research assistance. The theoretical claims, interpretations, and predictions are those of the author.
 
 ## References
 
